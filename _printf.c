@@ -2,41 +2,51 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
-
 /**
-* print_char - writes the character c to stdout
-* @c: The character to print
-*
+* redirect_format - redict depending of the format
+* @argp: list of arguments
+* @format: type of string
+* @printFormat: Array with valid types
+* Return: the number of char printing
 */
-void print_char(va_list c)
+int redirect_format(va_list argp, const char *format, types *printFormat)
 {
-char value = va_arg(c, int);
-
-_putchar (value);
+unsigned int i, j;
+int cont = 0;
+i = j = 0;
+while (format && format[i])
+{
+j = 0;
+if (format[i] != '%')
+{
+_putchar(format[i]);
+i++;
+cont++;
 }
-
-/**
-* print_string - writes the string s to stdout
-* @s: The string to print
-*
-*/
-void print_string(va_list s)
+else
 {
-char *string = va_arg(s, char *);
-
-for (; *string != '\0'; string++)
+i++;
+while (j < 4)
 {
-_putchar(*string);
+if (format[i] == *printFormat[j].valid)
+{
+if (format[i] != '%')
+{
+printFormat[j].f(argp);
+cont++;
+}
+else
+{
+printFormat[j].f();
+cont++;
 }
 }
-
-/**
-* print_percentage - writes the % to stdout
-* Return: always 0
-*/
-void print_percentage(void)
-{
-_putchar('%');
+j++;
+}
+i++;
+}
+}
+return (cont);
 }
 
 /**
@@ -47,42 +57,16 @@ _putchar('%');
 */
 int _printf(const char *format, ...)
 {
-unsigned int i, j;
 va_list argp;
-
+int count = 0;
 types printFormat[] = {
 {"c", print_char},
 {"s", print_string},
 {"%", print_percentage}
 };
 
-i = j = 0;
 va_start(argp, format);
-while (format && format[i])
-{
-j = 0;
-if (format[i] != '%')
-{
-_putchar(format[i]);
-i++;
-}
-else
-{
-i++;
-while (j < 4)
-{
-if (format[i] == *printFormat[j].valid)
-{
-if (format[i] != '%')
-printFormat[j].f(argp);
-else
-printFormat[j].f();
-}
-j++;
-}
-i++;
-}
-}
+count = redirect_format(argp, format, printFormat);
 va_end(argp);
-return (0);
+return (count);
 }
