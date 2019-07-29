@@ -16,6 +16,8 @@ int cont = 0;
 i = j = 0;
 while (format && format[i])
 {
+if (format[i] != '\0')
+{
 j = 0;
 if (format[i] != '%')
 {
@@ -26,24 +28,24 @@ cont++;
 else
 {
 i++;
-while (j < 4)
+while (j < 3)
 {
 if (format[i] == *printFormat[j].valid)
 {
 if (format[i] != '%')
 {
-printFormat[j].f(argp);
-cont++;
+cont += printFormat[j].f(argp);
 }
 else
 {
-printFormat[j].f();
-cont++;
+cont += printFormat[j].f();
 }
+break;
 }
 j++;
 }
 i++;
+}
 }
 }
 return (cont);

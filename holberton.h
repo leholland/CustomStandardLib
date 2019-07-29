@@ -14,14 +14,14 @@
 typedef struct v_types
 {
 char *valid;
-void (*f)();
+int (*f)();
 } types;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
 void print_number(int n);
-void print_char(va_list c);
-void print_string(va_list s);
-void print_percentage(void);
+int print_char(va_list c);
+int print_string(va_list s);
+int print_percentage(void);
 
 #endif
