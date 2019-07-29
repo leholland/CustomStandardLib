@@ -13,7 +13,7 @@
 int search_valid(char c, types *printFormat, va_list argp, unsigned int *aux)
 {
 int j = 0;
-while (j < 3)
+while (j < 5)
 {
 if (c == *printFormat[j].valid)
 {
@@ -81,7 +81,9 @@ int count = 0;
 types printFormat[] = {
 {"c", print_char},
 {"s", print_string},
-{"%", print_percentage}
+{"%", print_percentage},
+{"d", print_dec},
+{"i", print_int}
 };
 if (format == NULL)
 return (-1);
