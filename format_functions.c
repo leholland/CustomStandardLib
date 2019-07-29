@@ -19,11 +19,13 @@ return (1);
 */
 int print_string(va_list s)
 {
-int i = 0;
+int i;
 char *string = va_arg(s, char *);
-for (; *string != '\0'; string++, i++)
+if (string == NULL)
+string = "(null)";
+for (i = 0; string[i] != '\0'; i++)
 {
-_putchar(*string);
+_putchar(string[i]);
 }
 return (i);
 }
