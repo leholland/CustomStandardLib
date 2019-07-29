@@ -5,7 +5,7 @@
 * @n: Integer to print
 */
 
-void print_number(int n)
+int print_number(int n)
 {
 
 if (n > 9)
