@@ -50,6 +50,8 @@ cont++;
 else
 {
 i++;
+if (format[i] != '\0')
+{
 isvalid = search_valid(format[i], printFormat, argp, &cont);
 if (format[i] != ' ' && isvalid == 0)
 {
@@ -57,6 +59,9 @@ _putchar(format[i - 1]);
 _putchar(format[i]);
 cont = cont + 2;
 }
+}
+else
+return (-1);
 i++;
 }
 }
