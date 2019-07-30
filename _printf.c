@@ -82,8 +82,8 @@ types printFormat[] = {
 {"c", print_char},
 {"s", print_string},
 {"%", print_percentage},
-{"d", &int_spec},
-{"i", &int_spec},
+{"d", int_spec},
+{"i", int_spec},
 {'\0', NULL}
 };
 if (format == NULL)
