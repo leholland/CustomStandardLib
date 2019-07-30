@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
 * struct v_types - Type of formats
@@ -19,7 +20,7 @@ int (*f)();
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_number(int n);
+int int_spec(va_list n);
 int print_char(va_list c);
 int print_string(va_list s);
 int print_percentage(void);

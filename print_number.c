@@ -3,25 +3,38 @@
 /**
 * print_number - Prints digits to std output
 * @n: Integer to print
+* Return: 0
 */
 
-int print_int(int n)
+static int print_number(int n)
 {
+int hold = 0;
+char otter;
 
-if (n > 9)
+if (n > 9 || n < -9)
 {
-print_int(n/10);
-putchar('0' + n%10);
-int a = n / 10;
-n -= 10 * a;
-print_number(a);
+hold += print_number(n / 10);
 }
-_putchar('0' + n);
-
+else if (n < 0)
+hold += write(1, "-", 1);
+if (n < 0)
+otter = (-1 * (n % 10)) + '0';
+else
+otter = (n % 10) + '0';
+hold += write(1, &otter, 1);
+return (hold);
 }
-
-int print_dec(int n)
+/**
+* int_spec - Holder
+* @n: Integer in print_number
+* Return: byte
+*/
+int int_spec(va_list n)
 {
-if (n > 9)
+int byte;
+int i = va_arg(n, int);
 
+byte = 0;
+byte += print_number(i);
+return (byte);
 }
