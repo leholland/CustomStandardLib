@@ -13,7 +13,7 @@
 int search_valid(char c, types *printFormat, va_list argp, unsigned int *aux)
 {
 int j = 0;
-while (j < 7)
+while (j < 8)
 {
 if (c == *printFormat[j].valid)
 {
@@ -86,6 +86,7 @@ types printFormat[] = {
 {"i", int_spec},
 {"b", print_binary},
 {"R", rot13},
+{"r", rev_string},
 {'\0', NULL}
 };
 if (format == NULL)
