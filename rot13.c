@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
 * rot13 - encode srting into rot13
-* @s: ptr to print
+* @s: string to encode
 * Return: ptr
 */
 int rot13(va_list s)
