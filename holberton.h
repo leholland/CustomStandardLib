@@ -24,5 +24,6 @@ int int_spec(va_list n);
 int print_char(va_list c);
 int print_string(va_list s);
 int print_percentage(void);
+int print_binary(va_list n);
 char *leet(char *s);
 #endif

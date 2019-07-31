@@ -4,7 +4,7 @@
 #include <unistd.h>
 /**
 * search_valid - Search if the format is in the list of valid values
-*@c: character to compare
+* @c: character to compare
 * @printFormat: Array with valid types
 * @argp: list of arguments
 * @aux: pointer to the count
@@ -13,7 +13,7 @@
 int search_valid(char c, types *printFormat, va_list argp, unsigned int *aux)
 {
 int j = 0;
-while (j < 5)
+while (j < 6)
 {
 if (c == *printFormat[j].valid)
 {
@@ -84,6 +84,7 @@ types printFormat[] = {
 {"%", print_percentage},
 {"d", int_spec},
 {"i", int_spec},
+{"b", print_binary},
 {'\0', NULL}
 };
 if (format == NULL)
