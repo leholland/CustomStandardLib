@@ -13,7 +13,7 @@
 int search_valid(char c, types *printFormat, va_list argp, unsigned int *aux)
 {
 int j = 0;
-while (j < 6)
+while (j < 7)
 {
 if (c == *printFormat[j].valid)
 {
