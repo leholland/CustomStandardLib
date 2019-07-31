@@ -13,6 +13,11 @@ unsigned int i = 0;
 unsigned int l = 0;
 int j;
 unsigned int number = va_arg(n, unsigned int);
+if (number == 0)
+{
+_putchar('0');
+return (1);
+}
 while (number > 0)
 {
 binary[i] = number % 2;
