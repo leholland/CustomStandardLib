@@ -85,6 +85,7 @@ types printFormat[] = {
 {"d", int_spec},
 {"i", int_spec},
 {"b", print_binary},
+{"R", rot13},
 {'\0', NULL}
 };
 if (format == NULL)
